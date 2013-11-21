@@ -3,6 +3,12 @@ require 'test_helper'
 class ProductsControllerTest < ActionController::TestCase
   setup do
     @product = products(:one)
+    # @update = {             #patch for "should update product" replaces this convention
+    #   title: 'Lorem Ipsum',
+    #   description: 'Wibbles are fun!',
+    #   image_url: 'lorem.jpg',
+    #   price: 19.95
+    # }
   end
 
   test "should get index" do
