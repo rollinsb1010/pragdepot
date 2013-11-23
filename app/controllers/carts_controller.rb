@@ -10,6 +10,7 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+    @cart = Cart.find(params[:id])
   end
 
   # GET /carts/new
@@ -19,6 +20,7 @@ class CartsController < ApplicationController
 
   # GET /carts/1/edit
   def edit
+    @cart = Cart.find(params[:id])
   end
 
   # POST /carts
