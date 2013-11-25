@@ -4,11 +4,25 @@
 
 <h2>Your Pragmatic Cart</h2>
 
-<ul>
-  <% @cart.line_items.each do |item| %>
-    <li><%= item.quantity %> &times; <%= item.product.title %></li>
+<div class="cart_title" >Your Cart</div>
+<table>
+  <% for item in @cart.line_items %>
+    <%= form_for item do |f|%>
+      <tr>
+        <td>
+        <%= f.submit :value => "Update Qty" %>
+        <%= f.text_field :quantity, :size => 1 %>
+        </td>
+        <td><%= item.product.title %></td>
+        <td class="item_price" ><%#= number_to_currency(item.total_price) %></td>
+      </tr>
+    <%  end %>
   <% end %>
-</ul>
+    <tr class="total_line" >
+    <td colspan="2" >Total</td>
+</table>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
+
+<%#= link_to 'Edit', edit_cart_path(@cart) %>
+<br /><br />
 <%= link_to 'Back', carts_path %>
