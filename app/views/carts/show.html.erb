@@ -1,5 +1,5 @@
 <% if notice %>
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 <% end %>
 
 <h2>Your Pragmatic Cart</h2>
@@ -10,16 +10,17 @@
     <%= form_for item do |f|%>
       <tr>
         <td>
-        <%= f.submit :value => "Update Qty" %>
-        <%= f.text_field :quantity, :size => 1 %>
+          <%= f.submit :value => "Update Qty" %>
+          <%= f.text_field :quantity, :size => 1 %>
         </td>
         <td><%= item.product.title %></td>
-        <td class="item_price" ><%#= number_to_currency(item.total_price) %></td>
+        <td class="item_price" ><%= number_to_currency(item.product.price) %></td>
       </tr>
     <%  end %>
   <% end %>
-    <tr class="total_line" >
-    <td colspan="2" >Total</td>
+    <tr class="total_line">
+      <td colspan="2" style="padding-top: 30px;">Total: <%= number_to_currency(@total_cart) %></td>
+    </tr>
 </table>
 
 

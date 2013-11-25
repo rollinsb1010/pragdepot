@@ -11,6 +11,7 @@ class CartsController < ApplicationController
   # GET /carts/1.json
   def show
     @cart = Cart.find(params[:id])
+    total_price
 
 # begin
 # @cart = Cart.find(params[:id])
@@ -70,6 +71,13 @@ class CartsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to carts_url }
       format.json { head :no_content }
+    end
+  end
+
+  def total_price
+    @cart.line_items.each do |item|
+      @total_cart = item.product.price * item.quantity
+      #@total_cart = @cart.line_items.collect { |n| n * 2 }
     end
   end
 
